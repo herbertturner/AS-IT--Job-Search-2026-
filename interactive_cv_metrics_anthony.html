@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthony Sutherland - Interactive Executive CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .print-padding {
+                padding: 0 !important;
+                background-color: white !important;
+            }
+            .resume-sheet {
+                box-shadow: none !important;
+                border: none !important;
+                margin: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            body {
+                background-color: white !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
+
+    <header class="no-print bg-slate-900 text-white py-4 px-6 shadow-md flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center space-x-3">
+            <div class="h-10 w-10 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-lg shadow-inner">AS</div>
+            <div>
+                <h1 class="font-bold text-lg leading-none">Anthony Sutherland</h1>
+                <p class="text-xs text-slate-400 mt-1">Senior Telecommunications & UC Systems Engineer</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-3">
+            <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow flex items-center gap-2 transition duration-150">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" /></svg>
+                Print / Save PDF
+            </button>
+        </div>
+    </header>
+
+    <div class="flex-1 flex flex-col lg:flex-row print-padding p-6 max-w-7xl mx-auto w-full gap-6">
+        
+        <aside class="no-print w-full lg:w-80 bg-white p-5 rounded-xl shadow-md border border-slate-200 self-start">
+            <div class="border-b border-slate-100 pb-3 mb-4">
+                <h2 class="font-bold text-slate-900 text-md flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+                    Metrics & Data Filler
+                </h2>
+                <p class="text-xs text-slate-500 mt-1">Input Anthony's historical figures below to instantly update the resume text.</p>
+            </div>
+            
+            <div class="space-y-4 text-xs">
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">NOC Regional Nodes Monitored:</label>
+                    <input type="text" id="metric-nodes" value="12" class="w-full border border-slate-300 rounded px-2.5 py-1.5 focus:outline-none focus:border-blue-500 font-medium text-slate-900 shadow-sm" oninput="updateMetrics()">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">ServiceNow Backlog Speedup (%):</label>
+                    <input type="text" id="metric-noc-time" value="35" class="w-full border border-slate-300 rounded px-2.5 py-1.5 focus:outline-none focus:border-blue-500 font-medium text-slate-900 shadow-sm" oninput="updateMetrics()">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Base Endpoints Migrated:</label>
+                    <input type="text" id="metric-endpoints" value="4,500" class="w-full border border-slate-300 rounded px-2.5 py-1.5 focus:outline-none focus:border-blue-500 font-medium text-slate-900 shadow-sm" oninput="updateMetrics()">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Post-Migration Incidents Reduced (%):</label>
+                    <input type="text" id="metric-incidents" value="40" class="w-full border border-slate-300 rounded px-2.5 py-1.5 focus:outline-none focus:border-blue-500 font-medium text-slate-900 shadow-sm" oninput="updateMetrics()">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Fiber Diagnostics Speedup (%):</label>
+                    <input type="text" id="metric-fiber" value="25" class="w-full border border-slate-300 rounded px-2.5 py-1.5 focus:outline-none focus:border-blue-500 font-medium text-slate-900 shadow-sm" oninput="updateMetrics()">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">TraceSM Troubleshoot Speedup (%):</label>
+                    <input type="text" id="metric-tracesm" value="30" class="w-full border border-slate-300 rounded px-2.5 py-1.5 focus:outline-none focus:border-blue-500 font-medium text-slate-900 shadow-sm" oninput="updateMetrics()">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Pentagon VoIP Switch Uptime (%):</label>
+                    <input type="text" id="metric-uptime" value="99.99" class="w-full border border-slate-300 rounded px-2.5 py-1.5 focus:outline-none focus:border-blue-500 font-medium text-slate-900 shadow-sm" oninput="updateMetrics()">
+                </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-100">
+                <div class="bg-blue-50 rounded-lg p-3 border border-blue-100">
+                    <h3 class="font-bold text-blue-900 text-xs flex items-center gap-1.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        Exporting Tip
+                    </h3>
+                    <p class="text-[10px] text-blue-700 mt-1 leading-relaxed">
+                        To save as PDF, click <strong>Print / Save PDF</strong> and select <strong>"Save as PDF"</strong> as your printer destination. Enable background graphics to preserve the styling!
+                    </p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="flex-1 bg-white p-8 lg:p-12 rounded-xl shadow-lg border border-slate-200 resume-sheet max-w-[816px] mx-auto min-h-[1056px]">
+            
+            <!-- Contact Header -->
+            <div class="text-center pb-5 border-b border-slate-200">
+                <h1 class="text-3xl font-extrabold tracking-tight text-slate-900">ANTHONY SUTHERLAND</h1>
+                <p class="text-xs text-slate-600 mt-2 font-medium">
+                    The Woodlands, TX 77382 &nbsp;|&nbsp; 571.535.7972 &nbsp;|&nbsp; adsuther1@sbcglobal.net
+                </p>
+                <p class="text-xs text-blue-600 font-medium mt-1">
+                    linkedin.com/in/anthony-sutherland/
+                </p>
+            </div>
+
+            <section class="mt-6">
+                <h2 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider border-b-2 border-slate-800 pb-1">Professional Summary</h2>
+                <p class="text-xs text-slate-700 mt-3 leading-relaxed text-justify">
+                    Highly accomplished, cleared <strong>Senior Telecommunications & UC Systems Engineer</strong> with over 24 years of experience designing, deploying, migrating, and securing enterprise-grade voice and network infrastructures. Expert in bridging legacy TDM environments with modern cloud-native IP architectures across high-security DoD, federal (FBI, Pentagon), and Fortune 500 corporate environments. Advanced hands-on mastery of Avaya Aura, Cisco CUCM, and Nortel switch engineering, with a strong overlay in network routing/switching, fiber optics diagnostics, and rigorous cybersecurity compliance (STIG/ATO). Ready to deliver high-availability, zero-downtime unified communications architectures to elite Texas-based enterprises.
+                </p>
+                <div class="mt-3 flex flex-wrap gap-2 text-xs">
+                    <span class="bg-red-50 text-red-700 font-bold px-2.5 py-1 rounded border border-red-100 flex items-center gap-1">
+                        <span class="h-1.5 w-1.5 rounded-full bg-red-600 animate-pulse"></span>
+                        Active Security Clearance: DoD Secret
+                    </span>
+                    <span class="bg-slate-100 text-slate-800 font-semibold px-2.5 py-1 rounded border border-slate-200">
+                        Primary Specialty: Avaya Aura Core CM 6/7/8 & Nortel CS2100
+                    </span>
+                </div>
+            </section>
+
+            <section class="mt-6">
+                <h2 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider border-b-2 border-slate-800 pb-1">Core Competencies</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 mt-3 text-xs">
+                    <div class="flex items-start gap-2">
+                        <span class="text-blue-600 font-bold mt-0.5">•</span>
+                        <div><strong>VoIP & Unified Communications:</strong> Avaya Aura CM, System/Session Manager (SMGR/ASM), Cisco CUCM/CME, Nortel CS2100/CS1000/MSL-100, Session Border Controllers (SBC)</div>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <span class="text-blue-600 font-bold mt-0.5">•</span>
+                        <div><strong>Networking & Infrastructure:</strong> Cisco Chassis Switches/Routers, VLAN, DHCP, Patch Panels, Fiber Optics (SMF, MMF), cabling diagnostics (T568A, T568B)</div>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <span class="text-blue-600 font-bold mt-0.5">•</span>
+                        <div><strong>Security & Compliance:</strong> DoD STIGs, MUDGs compliance, Nessus vulnerability scans, Authorization to Operate (ATO) auditing, secure remote worker architectures, RHEL security hardening</div>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <span class="text-blue-600 font-bold mt-0.5">•</span>
+                        <div><strong>Diagnostics & Scripting:</strong> NetAlly LinkRunner AT 2000, Wireshark packet capture, CLI, REMEDY, ServiceNow, CAIRS cable manager, Python, JSON automation</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mt-6">
+                <h2 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider border-b-2 border-slate-800 pb-1">Professional Systems Engineering Experience</h2>
+
+                <!-- Consolidated Consulting Block -->
+                <div class="mt-4">
+                    <div class="flex justify-between items-baseline">
+                        <h3 class="text-xs font-bold text-slate-900 uppercase">Consolidated Enterprise Telecommunications Consulting</h3>
+                        <span class="text-xs font-bold text-slate-700 whitespace-nowrap">2021 – 2024</span>
+                    </div>
+                    <div class="text-xs text-slate-600 italic">Lead Systems Integration & Unified Communications Consultant</div>
+                    <p class="text-[11px] text-slate-600 mt-1 leading-normal">
+                        Retained by elite IT systems integrators (including GDIT, Tyto Athene, Verigent, TEKsystems, and Provalus) to engineer, migrate, and audit mission-critical voice networks across federal agency and defense sector environments.
+                    </p>
+
+                    <div class="mt-3 pl-3 border-l-2 border-blue-500">
+                        <div class="flex justify-between items-baseline">
+                            <h4 class="text-xs font-semibold text-slate-800">Lead Voice NOC Engineer <span class="text-slate-500 text-[10px] font-normal">(Provalus | Henderson, TX)</span></h4>
+                            <span class="text-[10px] font-bold text-slate-600">2024</span>
+                        </div>
+                        <ul class="list-disc pl-4 mt-1 text-[11px] text-slate-700 space-y-1">
+                            <li><strong>Directed Voice NOC operations:</strong> Monitored and maintained core voice switch stability to guarantee continuous service across <span id="val-nodes" class="font-bold text-slate-900 bg-yellow-50 px-0.5 border border-yellow-200 rounded">[X]</span> regional enterprise nodes.</li>
+                            <li><strong>Systematized ticketing response:</strong> Revamped NOC ticketing workflow within ServiceNow, accelerating incident-to-resolution times by <span id="val-noc-time" class="font-bold text-slate-900 bg-yellow-50 px-0.5 border border-yellow-200 rounded">[X]%</span> and minimizing downtime for critical switch failures.</li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-3 pl-3 border-l-2 border-blue-500">
+                        <div class="flex justify-between items-baseline">
+                            <h4 class="text-xs font-semibold text-slate-800">Lead Avaya CM UC Migration Engineer <span class="text-slate-500 text-[10px] font-normal">(Verigent | Scott AFB, IL)</span></h4>
+                            <span class="text-[10px] font-bold text-slate-600">2024</span>
+                        </div>
+                        <ul class="list-disc pl-4 mt-1 text-[11px] text-slate-700 space-y-1">
+                            <li><strong>Architected complex technical migration:</strong> Transitioned legacy Nortel DMS/TDM systems to modern, high-availability Avaya Aura CM 8.1 IP environments, successfully transitioning over <span id="val-endpoints" class="font-bold text-slate-900 bg-yellow-50 px-0.5 border border-yellow-200 rounded">[X,000]</span> military endpoints.</li>
+                            <li><strong>Provisioned base redundant platforms:</strong> Deployed and configured Avaya G450 Media Gateways with custom analog ports and Local Survivable Processors (LSP) to guarantee absolute base-level communications redundancy.</li>
+                            <li><strong>Resolved post-migration escalations:</strong> Decoupled complex system migration conflicts via REMEDY ticketing, reducing post-migration user incidents by <span id="val-incidents" class="font-bold text-slate-900 bg-yellow-50 px-0.5 border border-yellow-200 rounded">[X]%</span>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-3 pl-3 border-l-2 border-blue-500">
+                        <div class="flex justify-between items-baseline">
+                            <h4 class="text-xs font-semibold text-slate-800">Resident System Support & Cybersecurity Engineer <span class="text-slate-500 text-[10px] font-normal">(TEKsystems / GDIT | US Bases)</span></h4>
+                            <span class="text-[10px] font-bold text-slate-600">2023</span>
+                        </div>
+                        <ul class="list-disc pl-4 mt-1 text-[11px] text-slate-700 space-y-1">
+                            <li><strong>Led system security hardening:</strong> Managed cybersecurity testing of enterprise Avaya Aura devices on secure RHEL server environments to achieve DoD Network readiness.</li>
+                            <li><strong>Achieved Authorization to Operate (ATO):</strong> Authored and executed standardized STIG (Security Technical Implementation Guides) and MUDG testing checklists, eliminating critical vulnerabilities.</li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-3 pl-3 border-l-2 border-blue-500">
+                        <div class="flex justify-between items-baseline">
+                            <h4 class="text-xs font-semibold text-slate-800">Avaya CM VoIP Technician <span class="text-slate-500 text-[10px] font-normal">(Verigent | Robins AFB, GA)</span></h4>
+                            <span class="text-[10px] font-bold text-slate-600">2023</span>
+                        </div>
+                        <ul class="list-disc pl-4 mt-1 text-[11px] text-slate-700 space-y-1">
+                            <li><strong>Engineered dial plan configurations:</strong> Created complex translations and routes via AAR, ARS, Route Patterns, Trunk Groups, and Signaling Groups to support daily defense operations.</li>
+                            <li><strong>Secured off-base worker nodes:</strong> Configured secure Avaya Remote Worker integrations with Session Border Controllers (SBC) functioning as secure firewalls.</li>
+                            <li><strong>Maintained high system availability:</strong> Directed System Manager and Session Manager SIP routing configurations, preserving a steady-state system availability rate of 99.999%.</li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-3 pl-3 border-l-2 border-blue-500">
+                        <div class="flex justify-between items-baseline">
+                            <h4 class="text-xs font-semibold text-slate-800">Avaya CM UC Specialist <span class="text-slate-500 text-[10px] font-normal">(Qbase / Tyto | FBI / Redstone Arsenal, AL)</span></h4>
+                            <span class="text-[10px] font-bold text-slate-600">2021 – 2022</span>
+                        </div>
+                        <ul class="list-disc pl-4 mt-1 text-[11px] text-slate-700 space-y-1">
+                            <li><strong>Deployed enterprise physical networking:</strong> Racked and configured high-capacity Cisco switches in newly built spaces, optimizing VLAN parameters specifically for secure SIP phone performance.</li>
+                            <li><strong>Accelerated copper/fiber verification:</strong> Utilized NetAlly LinkRunner AT 2000 diagnostic hardware to perform physical-layer validations, cutting field testing windows by <span id="val-fiber" class="font-bold text-slate-900 bg-yellow-50 px-0.5 border border-yellow-200 rounded">[X]%</span>.</li>
+                            <li><strong>Mitigated security vulnerabilities:</strong> Partnered with Information System Security Officers (ISSO) to resolve network vulnerabilities uncovered during Nessus security scans.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <div class="flex justify-between items-baseline border-b border-slate-100 pb-0.5">
+                        <h3 class="text-xs font-bold text-slate-900 uppercase">Senior Corporate Systems Experience</h3>
+                        <span class="text-xs font-bold text-slate-700 whitespace-nowrap">2009 – 2020</span>
+                    </div>
+
+                    <div class="mt-3">
+                        <div class="flex justify-between items-baseline">
+                            <h4 class="text-xs font-bold text-slate-800">AVAYA PROFESSIONAL SERVICES <span class="text-slate-500 font-normal text-[10px]">| Houston, TX</span></h4>
+                            <span class="text-[10px] font-bold text-slate-600">2017 – 2020</span>
+                        </div>
+                        <div class="text-[10px] text-slate-500 italic mt-0.5">Senior Software Specialist</div>
+                        <ul class="list-disc pl-4 mt-1 text-[11px] text-slate-700 space-y-1">
+                            <li><strong>Engineered premium client integrations:</strong> Partnered directly with enterprise commercial and public accounts to design and upgrade core Avaya Aura products.</li>
+                            <li><strong>Executed packet analysis diagnostics:</strong> Solved high-priority outages on multi-site issues by analyzing real-time SIP messaging traces (TraceSM), decreasing average diagnostic times by <span id="val-tracesm" class="font-bold text-slate-900 bg-yellow-50 px-0.5 border border-yellow-200 rounded">[X]%</span>.</li>
+                            <li><strong>Deployed virtualized application hosts:</strong> Assisted client engineering groups in designing secure VMware ESXi virtual server environments to host core Avaya communication platforms.</li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-3">
+                        <div class="flex justify-between items-baseline">
+                            <h4 class="text-xs font-bold text-slate-800">AVAYA FEDERAL SOLUTIONS <span class="text-slate-500 font-normal text-[10px]">| Arlington, VA</span></h4>
+                            <span class="text-[10px] font-bold text-slate-600">2009 – 2017</span>
+                        </div>
+                        <div class="text-[10px] text-slate-500 italic mt-0.5">Resident Engineer @ The Pentagon</div>
+                        <ul class="list-disc pl-4 mt-1 text-[11px] text-slate-700 space-y-1">
+                            <li><strong>Managed military enterprise switches:</strong> Entrusted with daily technical operations, patching, and monitoring of high-security Nortel CS2100 VoIP and AS5300 switches.</li>
+                            <li><strong>Secured high system availability:</strong> Built and upgraded AS5300 blade servers to maintain a validated <span id="val-uptime" class="font-bold text-slate-900 bg-yellow-50 px-0.5 border border-yellow-200 rounded">[X]%</span> uptime rating across executive military endpoints.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <div class="flex justify-between items-baseline border-b border-slate-100 pb-0.5">
+                        <h3 class="text-xs font-bold text-slate-900 uppercase">Early Systems Development Expertise</h3>
+                        <span class="text-xs font-bold text-slate-700 whitespace-nowrap">2000 – 2008</span>
+                    </div>
+                    <div class="mt-3">
+                        <div class="flex justify-between items-baseline">
+                            <h4 class="text-xs font-bold text-slate-800">NORTEL NETWORKS <span class="text-slate-500 font-normal text-[10px]">| Richardson, TX</span></h4>
+                            <span class="text-[10px] font-bold text-slate-600">2000 – 2008</span>
+                        </div>
+                        <div class="text-[10px] text-slate-500 italic mt-0.5">Senior Member of Scientific Staff - Product Verification Engineer</div>
+                        <ul class="list-disc pl-4 mt-1 text-[11px] text-slate-700 space-y-1">
+                            <li><strong>Formulated software test programs:</strong> Designed comprehensive regression and functional test plans validating system software features built for legacy CS2100 PBX systems.</li>
+                            <li><strong>Collaborated on high-risk code releases:</strong> Coordinated with software engineering divisions during the product verification pipeline to document bugs and test rapid software hotfixes.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mt-6">
+                <h2 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider border-b-2 border-slate-800 pb-1">Community Leadership & Professional Education</h2>
+                <div class="mt-3">
+                    <div class="flex justify-between items-baseline">
+                        <h3 class="text-xs font-bold text-slate-800">CONROE INDEPENDENT SCHOOL DISTRICT <span class="text-slate-500 font-normal text-[10px]">| The Woodlands, TX</span></h3>
+                        <span class="text-xs font-bold text-slate-700 whitespace-nowrap">2025 – Present</span>
+                    </div>
+                    <div class="text-[10px] text-slate-500 italic mt-0.5">Professional Educator & Substitute Teacher</div>
+                    <p class="text-[11px] text-slate-700 mt-1 leading-relaxed">
+                        Stepped into active community service to lead regional classrooms and deliver structured lesson plans in core STEM fields (Mathematics, Science, Technology). Demonstrated high adaptability, classroom leadership, and communication skills while maintaining compliant and organized spaces across multiple district campuses.
+                    </p>
+                </div>
+            </section>
+
+            <section class="mt-6">
+                <h2 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider border-b-2 border-slate-800 pb-1">Education & Credentials</h2>
+                <div class="mt-3 text-xs text-slate-800 space-y-2">
+                    <div class="flex justify-between items-baseline">
+                        <div><strong>Bachelor of Science in Computer Science (Honors)</strong> – Jackson State University, Jackson, MS</div>
+                        <span class="font-semibold text-slate-700 whitespace-nowrap">Honors Graduate</span>
+                    </div>
+                    <div>
+                        <strong>Active Professional Certifications & Completed Courses:</strong>
+                        <div class="flex flex-wrap gap-1.5 mt-2 text-[10px]">
+                            <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-200 font-medium">AWS Certified Cloud Practitioner</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-200 font-medium">CompTIA Security+</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-200 font-medium">Cisco CCNA Routing & Switching</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-200 font-medium">CompTIA Network+</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-200 font-medium">Certified Ethical Hacker (CEH)</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-200 font-medium">Avaya ACIS (Implementation)</span>
+                            <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-200 font-medium">Avaya ACSS (Support Specialist)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        function updateMetrics() {
+            document.getElementById('val-nodes').innerText = document.getElementById('metric-nodes').value;
+            document.getElementById('val-noc-time').innerText = document.getElementById('metric-noc-time').value;
+            document.getElementById('val-endpoints').innerText = document.getElementById('metric-endpoints').value;
+            document.getElementById('val-incidents').innerText = document.getElementById('metric-incidents').value;
+            document.getElementById('val-fiber').innerText = document.getElementById('metric-fiber').value;
+            document.getElementById('val-tracesm').innerText = document.getElementById('metric-tracesm').value;
+            document.getElementById('val-uptime').innerText = document.getElementById('metric-uptime').value + '%';
+        }
+
+        // Run once on load
+        updateMetrics();
+    </script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthony's Career Path | Draft for Review</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #fdfcfb; }
+        .chart-container { position: relative; width: 100%; max-width: 500px; margin: auto; height: 300px; }
+        .nav-link-active { border-bottom: 3px solid #6366f1; color: #4338ca; font-weight: 700; }
+        .tier-card { transition: all 0.2s ease-in-out; }
+        .tier-card:hover { transform: translateY(-2px); border-color: #6366f1; }
+    </style>
+</head>
+<body class="text-slate-800 leading-relaxed">
+
+    <!-- Simple Navigation -->
+    <nav class="sticky top-0 bg-white/90 backdrop-blur-md border-b border-stone-200 z-50">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-lg font-bold text-stone-900 tracking-tight">Anthony’s Roadmap</div>
+            <div class="flex gap-6 text-sm font-medium text-stone-500">
+                <button onclick="showPage('start')" id="nav-start" class="pb-1 hover:text-indigo-600 transition-colors nav-link-active">The Review</button>
+                <button onclick="showPage('targets')" id="nav-targets" class="pb-1 hover:text-indigo-600 transition-colors">Target Tiers</button>
+                <button onclick="showPage('how')" id="nav-how" class="pb-1 hover:text-indigo-600 transition-colors">Outreach Strategy</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-6 py-12">
+
+        <!-- Page 1: The Plan & Review -->
+        <div id="page-start" class="space-y-12">
+            
+            <!-- Collaborative Header -->
+            <section class="bg-indigo-50 border-2 border-indigo-200 p-8 rounded-3xl shadow-sm">
+                <div class="flex items-start gap-4">
+                    <div class="bg-indigo-600 text-white w-10 h-10 rounded-full flex items-center justify-center shrink-0 font-bold">1</div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-indigo-900 mb-2">Step 1: Anthony, please review this draft.</h1>
+                        <p class="text-indigo-800 mb-4">
+                            This is your plan. Before we dive into finding specific people and emails, we need your feedback. Take a look at the categories and the list of companies. 
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="flex items-center gap-2 text-sm font-semibold text-indigo-700 bg-white px-4 py-2 rounded-full border border-indigo-100">
+                                <span class="w-2 h-2 bg-indigo-500 rounded-full"></span> Review the Reframing
+                            </span>
+                            <span class="flex items-center gap-2 text-sm font-semibold text-indigo-700 bg-white px-4 py-2 rounded-full border border-indigo-100">
+                                <span class="w-2 h-2 bg-indigo-500 rounded-full"></span> Verify Company Tiers
+                            </span>
+                            <span class="flex items-center gap-2 text-sm font-semibold text-indigo-700 bg-white px-4 py-2 rounded-full border border-indigo-100">
+                                <span class="w-2 h-2 bg-indigo-500 rounded-full"></span> Suggest Modifications
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-3xl font-bold text-stone-900 tracking-tight mb-6">How we are telling your story.</h2>
+                <p class="text-xl text-stone-600 font-light mb-8">
+                    We’ve looked at your 24 years of experience and turned it into a clear, continuous path. Here is how we’re handling the common "job search" hurdles:
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="p-8 bg-white rounded-2xl border border-stone-200 shadow-sm">
+                        <h3 class="font-bold text-stone-900 mb-3">Reframing the "Gap"</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            You haven't been out of work. Since 2021, you've been a <strong>Senior Enterprise Consultant</strong>. We've grouped your recent projects into one block of high-level consulting work. This shows companies that you are an active, in-demand expert.
+                        </p>
+                    </div>
+                    <div class="p-8 bg-white rounded-2xl border border-stone-200 shadow-sm">
+                        <h3 class="font-bold text-stone-900 mb-3">Highlighting your Security</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            Your work at the <strong>Pentagon</strong> and <strong>FBI</strong> is your superpower. Most local companies struggle with system security; you’ve already been trusted with the highest level of national security.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grid md:grid-cols-2 gap-12 items-center pt-8">
+                <div>
+                    <h2 class="text-2xl font-bold text-stone-900 mb-4">Your Value to Local Firms</h2>
+                    <p class="text-stone-600 mb-6">
+                        We are focusing your search on companies that need <strong>Zero Downtime</strong>. Your skills in keeping phone and data systems running 100% of the time is exactly what these targets need.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <span class="text-indigo-600 font-bold">✓</span>
+                            <span>Expertise in Avaya, Cisco, and Nortel.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-indigo-600 font-bold">✓</span>
+                            <span>Secure system hardening (RHEL).</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-indigo-600 font-bold">✓</span>
+                            <span>Active Security Clearance (a rare asset).</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm">
+                    <div class="chart-container">
+                        <canvas id="skillsChart"></canvas>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Page 2: Target Companies -->
+        <div id="page-targets" class="hidden space-y-12">
+            <section>
+                <h2 class="text-3xl font-bold text-stone-900 mb-4">The 4 Tiers of Target Companies</h2>
+                <p class="text-stone-600 mb-8">
+                    We’ve organized these into 4 groups. Tier 1 is closest to home and easiest to commute. Tiers 2-4 expand your search to ensure you have 60 total options to choose from. 
+                </p>
+
+                <!-- Tier Selector -->
+                <div class="flex flex-wrap gap-2 mb-8">
+                    <button onclick="filterTable('Tier 1')" class="px-5 py-2 bg-indigo-600 text-white rounded-full text-sm font-semibold shadow-sm tier-btn">Tier 1: Local Corporate</button>
+                    <button onclick="filterTable('Tier 2')" class="px-5 py-2 bg-stone-200 text-stone-700 rounded-full text-sm font-semibold hover:bg-stone-300 tier-btn">Tier 2: Houston/Energy</button>
+                    <button onclick="filterTable('Tier 3')" class="px-5 py-2 bg-stone-200 text-stone-700 rounded-full text-sm font-semibold hover:bg-stone-300 tier-btn">Tier 3: Healthcare/NP</button>
+                    <button onclick="filterTable('Tier 4')" class="px-5 py-2 bg-stone-200 text-stone-700 rounded-full text-sm font-semibold hover:bg-stone-300 tier-btn">Tier 4: Education/Teaching</button>
+                </div>
+
+                <div class="bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-sm">
+                    <table class="w-full text-left">
+                        <thead class="bg-stone-50 border-b border-stone-200">
+                            <tr>
+                                <th class="px-6 py-4 text-xs font-bold uppercase text-stone-500">Company Name</th>
+                                <th class="px-6 py-4 text-xs font-bold uppercase text-stone-500">Why they need you</th>
+                            </tr>
+                        </thead>
+                        <tbody id="company-table-body" class="divide-y divide-stone-100 text-sm">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="bg-amber-50 border border-amber-100 p-6 rounded-2xl mt-8">
+                    <p class="text-amber-800 text-sm">
+                        <strong>Note:</strong> Once you approve these companies, we will generate the specific names and LinkedIn profiles for the hiring managers at each one.
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Page 3: Outreach Strategy -->
+        <div id="page-how" class="hidden space-y-12">
+            <section>
+                <h2 class="text-3xl font-bold text-stone-900 mb-4">How we’ll start the conversation</h2>
+                <p class="text-stone-600 mb-8">
+                    When you’re ready, we’ll use a "Diagnostic Approach." Instead of asking for a job, you’ll offer to share your expertise on secure communications.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="p-8 bg-indigo-900 text-indigo-100 rounded-3xl shadow-xl">
+                        <h3 class="font-bold text-white mb-4">Sample outreach message:</h3>
+                        <p class="text-sm italic leading-relaxed">
+                            "Hi [Name], I'm a senior network engineer living in The Woodlands. I've spent years managing secure phone systems for the Pentagon and FBI. I'm looking for a local role and would love 10 minutes of your time to hear your thoughts on current tech trends in the area. No pressure, just looking to connect with a fellow local pro."
+                        </p>
+                    </div>
+                    <div class="space-y-6 flex flex-col justify-center">
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center shrink-0 font-bold">1</div>
+                            <div>
+                                <h4 class="font-bold">Lead with your location.</h4>
+                                <p class="text-sm text-stone-500">Companies in The Woodlands love hiring people who actually live there.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center shrink-0 font-bold">2</div>
+                            <div>
+                                <h4 class="font-bold">Focus on Security.</h4>
+                                <p class="text-sm text-stone-500">In 2026, security is every IT manager's #1 stressor. You can fix that.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-stone-900 text-white p-10 rounded-3xl text-center">
+                <h2 class="text-2xl font-bold mb-4 text-indigo-400">Next Step: Your Review</h2>
+                <p class="text-stone-400 mb-8 max-w-lg mx-auto">
+                    Take a moment to look at the "Target Tiers" list. If you see a company that doesn't fit, or want to add one, let us know. We will update the plan immediately.
+                </p>
+                <button onclick="showPage('start')" class="px-8 py-3 bg-white text-stone-900 font-bold rounded-full hover:bg-indigo-500 hover:text-white transition-all">
+                    Back to Plan Summary
+                </button>
+            </section>
+        </div>
+
+    </main>
+
+    <script>
+        const companies = [
+            { group: 'Tier 1', name: 'Chevron Phillips Chemical', why: 'Local HQ; massive multi-site Avaya/Cisco network needs.' },
+            { group: 'Tier 1', name: 'ExxonMobil (Spring Campus)', why: 'High-security campus; values your FBI/Pentagon background.' },
+            { group: 'Tier 1', name: 'Huntsman Corp', why: 'Global company based in The Woodlands; needs senior voice ops.' },
+            { group: 'Tier 1', name: 'Entergy Texas', why: 'Utilities require 100% uptime for critical comms.' },
+            { group: 'Tier 1', name: 'Consolidated Communications', why: 'Telecom giant with local Conroe roots.' },
+            { group: 'Tier 2', name: 'KBR (Defense)', why: 'Actively hires for cleared roles in the Energy Corridor.' },
+            { group: 'Tier 2', name: 'Halliburton', why: 'Large global network requiring elite engineering maintenance.' },
+            { group: 'Tier 2', name: 'BP America', why: 'Complex enterprise voice migration projects.' },
+            { group: 'Tier 2', name: 'Lumen Technologies', why: 'Enterprise fiber and voice infrastructure focus.' },
+            { group: 'Tier 3', name: 'Houston Methodist (Woodlands)', why: 'Hospitals need secure, redundant phone systems.' },
+            { group: 'Tier 3', name: 'Texas Children’s Hospital', why: 'Mission-critical patient comms; perfect for your uptime focus.' },
+            { group: 'Tier 3', name: 'Memorial Hermann', why: 'Huge clinical network needing steady senior hands.' },
+            { group: 'Tier 4', name: 'Conroe ISD (IT Dept)', why: 'Internal track; you are already in their system as a sub.' },
+            { group: 'Tier 4', name: 'Lone Star College', why: 'Large computer science network; often needs senior engineers.' },
+            { group: 'Tier 4', name: 'CTE Technical Instructor', why: 'Opportunity to teach networking to the next generation.' }
+        ];
+
+        function showPage(pageId) {
+            document.querySelectorAll('main > div').forEach(div => div.classList.add('hidden'));
+            document.getElementById('page-' + pageId).classList.remove('hidden');
+            
+            document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('nav-link-active'));
+            document.getElementById('nav-' + pageId).classList.add('nav-link-active');
+            window.scrollTo(0,0);
+        }
+
+        function filterTable(groupName) {
+            const body = document.getElementById('company-table-body');
+            body.innerHTML = '';
+            const filtered = companies.filter(c => c.group === groupName);
+            filtered.forEach(c => {
+                const row = `<tr>
+                    <td class="px-6 py-4 font-bold text-stone-900">${c.name}</td>
+                    <td class="px-6 py-4 text-stone-600">${c.why}</td>
+                </tr>`;
+                body.innerHTML += row;
+            });
+
+            // Update button styles
+            document.querySelectorAll('.tier-btn').forEach(btn => {
+                if(btn.innerText.includes(groupName)) {
+                    btn.className = "px-5 py-2 bg-indigo-600 text-white rounded-full text-sm font-semibold shadow-sm tier-btn";
+                } else {
+                    btn.className = "px-5 py-2 bg-stone-200 text-stone-700 rounded-full text-sm font-semibold hover:bg-stone-300 tier-btn";
+                }
+            });
+        }
+
+        window.onload = function() {
+            filterTable('Tier 1');
+            
+            const ctx = document.getElementById('skillsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['System Reliability', 'Cyber Security', 'System Migration', 'Clearance Level'],
+                    datasets: [{
+                        label: 'Anthony Profile',
+                        data: [98, 100, 95, 100],
+                        backgroundColor: '#6366f1',
+                        borderRadius: 10
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: { beginAtZero: true, max: 100, display: false },
+                        y: { 
+                            grid: { display: false },
+                            ticks: { font: { size: 12, weight: '600' }, color: '#444' }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

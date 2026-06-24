@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthony Sutherland | Career Strategy Center</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN for visual analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --bg-sandstone: #fbfaf7;
+            --charcoal-indigo: #1e2530;
+            --emerald-soft: #10b981;
+            --emerald-deep: #064e3b;
+            --amber-highlight: #d97706;
+            --border-warm: #e7e5e4;
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; 
+            background-color: var(--bg-sandstone);
+            color: var(--charcoal-indigo);
+        }
+
+        .chart-container { 
+            position: relative; 
+            width: 100%; 
+            max-width: 550px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            height: 320px; 
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(231, 229, 228, 0.8);
+        }
+
+        .step-inactive { opacity: 0.55; filter: grayscale(1); }
+        .step-active { opacity: 1; transform: scale(1.01); border-color: var(--emerald-soft); }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Main Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center text-white font-extrabold text-xl shadow-md">AS</div>
+                <div class="flex flex-col">
+                    <span class="font-extrabold tracking-tight text-lg text-slate-900">ANTHONY SUTHERLAND</span>
+                    <span class="text-[10px] text-emerald-600 font-bold uppercase tracking-wider">Strategic Career Guide & Tools</span>
+                </div>
+            </div>
+            <div class="hidden lg:flex gap-2 text-sm font-semibold">
+                <button onclick="switchTab('welcome')" id="nav-welcome" class="px-4 py-2.5 rounded-lg transition-all text-slate-800 bg-stone-100 shadow-sm">1. Strategy & Setup</button>
+                <button onclick="switchTab('targets')" id="nav-targets" class="px-4 py-2.5 rounded-lg text-slate-600 hover:text-indigo-600 transition-colors">2. The 60 Target Firms</button>
+                <button onclick="switchTab('timeline')" id="nav-timeline" class="px-4 py-2.5 rounded-lg text-slate-600 hover:text-indigo-600 transition-colors">3. Transition Timeline</button>
+                <button onclick="switchTab('linkedin')" id="nav-linkedin" class="px-4 py-2.5 rounded-lg text-slate-600 hover:text-indigo-600 transition-colors">4. LinkedIn Blueprint</button>
+                <button onclick="switchTab('toolkit')" id="nav-toolkit" class="px-4 py-2.5 rounded-lg text-slate-600 hover:text-indigo-600 transition-colors">5. Outreach Kit</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Collaboration & Status Alert -->
+    <header class="bg-indigo-905 bg-slate-900 text-stone-100 py-4 px-6 text-center text-xs font-semibold shadow-inner border-b border-stone-800">
+        <div class="max-w-7xl mx-auto flex items-center justify-center gap-3 flex-wrap">
+            <span class="bg-emerald-500 text-white text-[9px] uppercase px-2.5 py-0.5 rounded font-black tracking-wider">COLLABORATIVE WORKFLOW</span>
+            <span>Anthony, this is a draft for your review. Take a look at the strategy, play with your interactive resume, and check out the companies. Once you give the thumbs up, we'll extract direct contact details of local hiring managers for you.</span>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-7xl mx-auto px-6 py-12 w-full">
+
+        <!-- TAB 1: Welcome & Setup -->
+        <section id="tab-welcome" class="tab-pane space-y-12">
+            <div class="grid lg:grid-cols-3 gap-10 items-start">
+                
+                <div class="lg:col-span-2 space-y-8">
+                    <div class="bg-white p-8 md:p-10 rounded-3xl border border-stone-200 shadow-sm space-y-6">
+                        <h2 class="text-3xl font-black text-slate-900 tracking-tight">Let's Map Out Your Next Move, Anthony</h2>
+                        <p class="text-md text-slate-600 leading-relaxed">
+                            Welcome to your personal career planning site. Our goal is to make your job search completely stress-free, structured, and under your control. We want to bypass cold applications and automated screening machines entirely, giving you a quiet, highly respected local footprint in The Woodlands.
+                        </p>
+                        
+                        <div class="bg-stone-50 border border-stone-200 p-6 rounded-2xl space-y-4">
+                            <h3 class="font-bold text-slate-900 text-md">Your Active Strategic Documents</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed">
+                                Use the links below to access, test, and save your career files directly. When you update the interactive file, you can instantly export a tailored resume for any role.
+                            </p>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <a href="AnthonySutherland_VOIPUC_MAY2026_11.docx" download class="flex items-center gap-3 p-4 bg-white hover:bg-stone-100/50 rounded-xl border border-stone-200 transition-all group">
+                                    <div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="text-xs font-bold text-slate-900">Original Resume File</span>
+                                        <span class="text-[10px] text-slate-400">AnthonySutherland_VOIPUC_MAY2026_11.docx</span>
+                                    </div>
+                                </a>
+                                
+                                <a href="interactive_cv_metrics_anthony_2.html" target="_blank" class="flex items-center gap-3 p-4 bg-emerald-50/50 hover:bg-emerald-50 rounded-xl border border-emerald-100 transition-all group">
+                                    <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 animate-pulse">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="text-xs font-bold text-emerald-800">Launch Interactive CV</span>
+                                        <span class="text-[10px] text-emerald-600 font-semibold">interactive_cv_metrics_anthony_2.html</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h3 class="font-extrabold text-lg text-slate-900">Turning a Potential Challenge into an Absolute Strength</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Having a series of short contract roles since 2021 can often make recruiters ask standard "dates" questions instead of focusing on what you can build. To solve this, we used the advice in <span class="font-semibold text-slate-800">0_10.1 Anatomy of a Resume</span> to rewrite your narrative.
+                            </p>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                We grouped those project roles under a single, highly impressive continuous title: <strong class="text-indigo-900">Consolidated Enterprise Telecommunications Consulting</strong>. This changes how you are viewed. You're no longer seen as someone filling gaps; you are seen as an elite troubleshooter who is hand-picked by major defense and federal integrators to handle their most complex network migrations.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Highlight Resume Rules Integration -->
+                    <div class="bg-amber-50 border border-amber-200 p-6 rounded-2xl space-y-3">
+                        <h4 class="font-bold text-amber-900 text-sm flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                            The "Biography" Trap & How We Beat It
+                        </h4>
+                        <p class="text-xs text-stone-600 leading-relaxed">
+                            A major rule highlighted in <span class="font-semibold text-stone-800">0.2 Resume Mistakes Top Ten_10.pdf</span> is that most candidates write their resumes like a biography—listing standard daily responsibilities instead of measurable results. 
+                        </p>
+                        <p class="text-xs text-stone-600 leading-relaxed">
+                            Our newly updated <span class="font-semibold text-stone-800">interactive_cv_metrics_anthony_2.html</span> is built specifically to address this. It updates your metric callouts instantly, ensuring that every resume you generate shows exactly what you improved, built, or saved, which bypasses automated filters and catches human eyes instantly.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Collaborative Status Panel -->
+                    <div class="bg-slate-900 text-white p-8 rounded-3xl shadow-xl space-y-6">
+                        <div class="space-y-2">
+                            <span class="text-[9px] uppercase tracking-wider font-extrabold bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded">How we collaborate</span>
+                            <h3 class="text-xl font-bold">Your Review Always Comes First</h3>
+                        </div>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            We are not going to push you to apply blindly. Our process follows three simple, stress-free phases:
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex gap-3 items-start">
+                                <div class="w-6 h-6 rounded-full bg-slate-800 flex items-center justify-center text-xs font-bold text-emerald-400 shrink-0">1</div>
+                                <p class="text-xs text-slate-300">You review the 60 local targets. If you see a company you dislike, we'll pull it off the list immediately.</p>
+                            </div>
+                            <div class="flex gap-3 items-start">
+                                <div class="w-6 h-6 rounded-full bg-slate-800 flex items-center justify-center text-xs font-bold text-emerald-400 shrink-0">2</div>
+                                <p class="text-xs text-slate-300">Once you approve the target companies, we will search out and compile the specific names and emails of key managers at each firm.</p>
+                            </div>
+                            <div class="flex gap-3 items-start">
+                                <div class="w-6 h-6 rounded-full bg-slate-800 flex items-center justify-center text-xs font-bold text-emerald-400 shrink-0">3</div>
+                                <p class="text-xs text-slate-300">We begin our outreach in steady waves, ensuring we stay focused, disciplined, and never overwhelmed.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Market Alignment Radar Visual -->
+                    <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm space-y-4">
+                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest text-center">Your Core Technical Strengths</h4>
+                        <div class="chart-container">
+                            <canvas id="radarChart"></canvas>
+                        </div>
+                        <p class="text-[11px] text-slate-500 leading-relaxed text-center">
+                            Your Pentagon and FBI systems experience represents high-availability skills that corporate telecom architectures desperately need.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TAB 2: The 60 Target Firms (Stratified Grid with Plain Explanations) -->
+        <section id="tab-targets" class="tab-pane hidden space-y-12">
+            <div class="max-w-4xl space-y-4">
+                <h2 class="text-3xl font-black text-slate-900 tracking-tight">The 60 Selected Local & Regional Targets</h2>
+                <p class="text-slate-600 text-md leading-relaxed">
+                    We have curated exactly <strong>60 companies and organizations</strong> where your background in Avaya Aura, Cisco, and Nortel matches active needs. These targets are organized into four groups. Each group contains exactly **15 organizations** divided evenly into **5 Large, 5 Medium, and 5 Small** entities so you have options across all scales.
+                </p>
+            </div>
+
+            <!-- Explanatory Group Introductions -->
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="bg-white p-5 rounded-2xl border border-stone-200 space-y-2">
+                    <span class="text-xs font-bold text-emerald-600 uppercase">Group 1: Woodlands Local</span>
+                    <p class="text-[11px] text-slate-500 leading-normal">
+                        Firms within 40 miles of home. Outstanding quality of life, minimal commute. High demand for Avaya Aura Core management.
+                    </p>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-stone-200 space-y-2">
+                    <span class="text-xs font-bold text-indigo-600 uppercase">Group 2: Greater Houston</span>
+                    <p class="text-[11px] text-slate-500 leading-normal">
+                        Major hubs with a longer commute, but high demand and top-tier budgets for your active Security Clearance.
+                    </p>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-stone-200 space-y-2">
+                    <span class="text-xs font-bold text-teal-600 uppercase">Group 3: Healthcare & NP</span>
+                    <p class="text-[11px] text-slate-500 leading-normal">
+                        Woodlands-area clinics needing 100% uptime where dropped phone lines can be life-threatening. Ideal for consulting.
+                    </p>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-stone-200 space-y-2">
+                    <span class="text-xs font-bold text-amber-600 uppercase">Group 4: Education Track</span>
+                    <p class="text-[11px] text-slate-500 leading-normal">
+                        School districts and colleges where your active substitute background in Conroe ISD gives you an immediate advantage.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Table Filters -->
+            <div class="bg-white rounded-3xl border border-stone-200 shadow-sm overflow-hidden p-6 md:p-8 space-y-6">
+                <div class="flex flex-wrap items-center justify-between gap-4 border-b border-stone-100 pb-6">
+                    <div class="flex flex-wrap gap-2.5">
+                        <button onclick="filterGroup('all')" class="grp-btn px-4 py-2 rounded-full text-xs font-bold bg-slate-900 text-white shadow-sm transition-all">All Targets (60)</button>
+                        <button onclick="filterGroup('1')" class="grp-btn px-4 py-2 rounded-full text-xs font-bold bg-stone-100 text-slate-600 hover:bg-stone-200 transition-all">Woodlands Local (15)</button>
+                        <button onclick="filterGroup('2')" class="grp-btn px-4 py-2 rounded-full text-xs font-bold bg-stone-100 text-slate-600 hover:bg-stone-200 transition-all">Greater Houston (15)</button>
+                        <button onclick="filterGroup('3')" class="grp-btn px-4 py-2 rounded-full text-xs font-bold bg-stone-100 text-slate-600 hover:bg-stone-200 transition-all">Healthcare/NP (15)</button>
+                        <button onclick="filterGroup('4')" class="grp-btn px-4 py-2 rounded-full text-xs font-bold bg-stone-100 text-slate-600 hover:bg-stone-200 transition-all">Education/CTE (15)</button>
+                    </div>
+
+                    <div class="flex gap-3">
+                        <select id="sizeFilter" onchange="applyFilters()" class="text-xs font-bold bg-stone-50 border border-stone-200 rounded-lg px-3 py-2.5 focus:outline-none">
+                            <option value="all">All Sizes</option>
+                            <option value="Large">Large (&gt;1000 employees)</option>
+                            <option value="Medium">Medium (100-999 employees)</option>
+                            <option value="Small">Small (&lt;100 employees)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-stone-100 text-slate-400 text-[10px] uppercase font-bold tracking-wider">
+                                <th class="pb-4">Group</th>
+                                <th class="pb-4">Size</th>
+                                <th class="pb-4">Company Name</th>
+                                <th class="pb-4">Why they need your background</th>
+                            </tr>
+                        </thead>
+                        <tbody id="companyTableBody" class="divide-y divide-stone-100 text-xs">
+                            <!-- Populated dynamically with JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: Transition Timeline (Wave Deployment) -->
+        <section id="tab-timeline" class="tab-pane hidden space-y-12">
+            <div class="max-w-3xl space-y-4">
+                <h2 class="text-3xl font-black text-slate-900 tracking-tight">Your Action Roadmap</h2>
+                <p class="text-md text-slate-600 leading-relaxed">
+                    Rather than applying to dozens of companies all at once and risking burnout, we focus our efforts in organized waves. This simple step-by-step roadmap guides your activity week-by-week.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div id="step-timeline-1" class="step-active border border-stone-200 p-8 rounded-3xl bg-white shadow-sm transition-all">
+                    <div class="w-10 h-10 bg-emerald-500 text-white rounded-full flex items-center justify-center font-bold mb-4 shadow-md">1</div>
+                    <h4 class="font-extrabold text-slate-900">Weeks 1 to 4</h4>
+                    <p class="text-[10px] font-bold text-emerald-600 uppercase mt-1">Focus on Group 1 (Woodlands Local)</p>
+                    <p class="text-xs text-slate-500 mt-4 leading-relaxed italic">
+                        "Goal: Get 3 warm, informal chats with technical neighbors."
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-stone-100">
+                        <span class="text-[9px] font-black uppercase text-slate-400">Trigger to step 2:</span>
+                        <p class="text-[11px] text-slate-600 mt-1 leading-normal">
+                            Activate Group 2 if we reach Week 4 with fewer than 3 conversations.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div id="step-timeline-2" class="step-inactive border border-stone-200 p-8 rounded-3xl bg-white transition-all">
+                    <div class="w-10 h-10 bg-slate-200 text-slate-400 rounded-full flex items-center justify-center font-bold mb-4">2</div>
+                    <h4 class="font-extrabold text-slate-900">Weeks 5 to 8</h4>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase mt-1">Focus on Group 2 (Houston Hubs)</p>
+                    <p class="text-xs text-slate-500 mt-4 leading-relaxed italic">
+                        "Goal: Secure at least 1 technical or formal interview."
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-stone-100">
+                        <span class="text-[9px] font-black uppercase text-slate-400">Trigger to step 3:</span>
+                        <p class="text-[11px] text-slate-600 mt-1 leading-normal">
+                            Activate Group 3 if we reach Week 8 with no technical interviews.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div id="step-timeline-3" class="step-inactive border border-stone-200 p-8 rounded-3xl bg-white transition-all">
+                    <div class="w-10 h-10 bg-slate-200 text-slate-400 rounded-full flex items-center justify-center font-bold mb-4">3</div>
+                    <h4 class="font-extrabold text-slate-900">Weeks 9 to 12</h4>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase mt-1">Focus on Group 3 (Healthcare/NP)</p>
+                    <p class="text-xs text-slate-500 mt-4 leading-relaxed italic">
+                        "Goal: Secure at least 1 reliable contract or consulting offer."
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-stone-100">
+                        <span class="text-[9px] font-black uppercase text-slate-400">Trigger to step 4:</span>
+                        <p class="text-[11px] text-slate-600 mt-1 leading-normal">
+                            Activate Group 4 if we reach Week 12 without a solid offer.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div id="step-timeline-4" class="step-inactive border border-stone-200 p-8 rounded-3xl bg-white transition-all">
+                    <div class="w-10 h-10 bg-slate-200 text-slate-400 rounded-full flex items-center justify-center font-bold mb-4">4</div>
+                    <h4 class="font-extrabold text-slate-900">Weeks 13+</h4>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase mt-1">Focus on Group 4 (Education Track)</p>
+                    <p class="text-xs text-slate-500 mt-4 leading-relaxed italic">
+                        "Goal: Convert your substitute teaching footprint into an engineering or CTE instructor role."
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-stone-100">
+                        <span class="text-[9px] font-black uppercase text-slate-400">Conroe ISD Advantage:</span>
+                        <p class="text-[11px] text-slate-600 mt-1 leading-normal">
+                            You're already cleared in their system. This makes you a safe, low-risk choice.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Intercom Control Buttons -->
+            <div class="flex justify-center gap-3">
+                <button onclick="animateTimeline(1)" class="px-5 py-2.5 bg-slate-800 text-white rounded-full text-xs font-bold hover:bg-slate-700 shadow transition-colors">Show Month 1</button>
+                <button onclick="animateTimeline(2)" class="px-5 py-2.5 bg-slate-800 text-white rounded-full text-xs font-bold hover:bg-slate-700 shadow transition-colors">Show Month 2</button>
+                <button onclick="animateTimeline(3)" class="px-5 py-2.5 bg-slate-800 text-white rounded-full text-xs font-bold hover:bg-slate-700 shadow transition-colors">Show Month 3</button>
+                <button onclick="animateTimeline(4)" class="px-5 py-2.5 bg-slate-800 text-white rounded-full text-xs font-bold hover:bg-slate-700 shadow transition-colors">Show Month 4</button>
+            </div>
+        </section>
+
+        <!-- TAB 4: LinkedIn Profile Blueprints & Recruiter Magnet Strategies -->
+        <section id="tab-linkedin" class="tab-pane hidden space-y-12">
+            <div class="max-w-4xl space-y-4">
+                <h2 class="text-3xl font-black text-slate-900 tracking-tight">Recruiter Magnet Blueprint</h2>
+                <p class="text-md text-slate-600 leading-relaxed">
+                    Think of LinkedIn as your personal, 24/7 digital billboard. When local recruiters are searching for talent, we want your profile to rise straight to the top. Here is your step-by-step roadmap to make your digital brand stand out.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Step-by-Step Optimization Process -->
+                <div class="lg:col-span-2 space-y-6">
+                    <!-- Step 1 -->
+                    <div class="bg-white p-6 rounded-2xl border border-stone-200 space-y-3">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-indigo-50 text-indigo-800 font-bold flex items-center justify-center text-sm shrink-0">1</span>
+                            <h3 class="font-extrabold text-md text-slate-900">Overhaul Your Headline</h3>
+                        </div>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Never list a generic job title or "Unemployed." Replace it with a statement of your level of expertise, core platforms, and active clearances.
+                        </p>
+                        <div class="relative bg-stone-50 p-4 rounded-xl border border-stone-200">
+                            <span class="text-[9px] font-black uppercase text-indigo-700 absolute top-2.5 right-3">Copy Headline</span>
+                            <p id="txt-headline" class="text-xs font-mono text-slate-700 pr-12">Senior Telecommunications & Voice Engineer | DoD Secret Cleared | Avaya Aura Core, Cisco CUCM & Nortel Specialists | Secure High-Availability Infrastructure & Migration</p>
+                            <button onclick="copyToClipboard('txt-headline')" class="absolute top-2 right-2 p-1 text-slate-400 hover:text-slate-600 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="bg-white p-6 rounded-2xl border border-stone-200 space-y-3">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-indigo-50 text-indigo-800 font-bold flex items-center justify-center text-sm shrink-0">2</span>
+                            <h3 class="font-extrabold text-md text-slate-900">Consolidate Experience to Bridge the Gaps</h3>
+                        </div>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Under your Experience section, create a single, continuous entry from 2021 to 2024 to represent your contract tenure. This shows recruiters absolute stability.
+                        </p>
+                        <div class="bg-stone-50 p-4 rounded-xl border border-stone-200 text-xs text-slate-600 space-y-1">
+                            <p><strong>Company:</strong> Consolidated Enterprise Telecommunications Consulting</p>
+                            <p><strong>Title:</strong> Lead Systems Integration & Unified Communications Consultant (Contract)</p>
+                            <p><strong>Dates:</strong> 2021 - 2024</p>
+                            <p class="text-[10px] text-slate-400 mt-2">Bullet points under this section should focus on the high-level environments you supported (Scott AFB, Redstone Arsenal, Robins AFB).</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="bg-white p-6 rounded-2xl border border-stone-200 space-y-3">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-indigo-50 text-indigo-800 font-bold flex items-center justify-center text-sm shrink-0">3</span>
+                            <h3 class="font-extrabold text-md text-slate-900">Pin Your Dynamic Resume to Your Profile</h3>
+                        </div>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Use LinkedIn’s "Featured" section to link to your hosted interactive resume. This instantly sets you apart from standard applicants by giving recruiters a visual, interactive experience.
+                        </p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="bg-white p-6 rounded-2xl border border-stone-200 space-y-3">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-indigo-50 text-indigo-800 font-bold flex items-center justify-center text-sm shrink-0">4</span>
+                            <h3 class="font-extrabold text-md text-slate-900">Setup Active Search Parameters</h3>
+                        </div>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Toggle your "Open to Work" status to **Recruiters Only** to avoid public flags. Add the following search keywords to your targeted skills directory:
+                        </p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded border border-stone-200">Avaya Aura</span>
+                            <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded border border-stone-200">Cisco CUCM</span>
+                            <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded border border-stone-200">Session Border Controller</span>
+                            <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded border border-stone-200">SIP Routing</span>
+                            <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded border border-stone-200">DoD Security Clearance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recruiter Attraction Side-Panel -->
+                <div class="space-y-6">
+                    <div class="bg-slate-900 text-white p-8 rounded-3xl space-y-4">
+                        <h4 class="font-extrabold text-lg text-emerald-400">Recruiter Insights</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Most corporate telecom recruiters do not run manual searches; they use automated filters to crawl profile keywords. By implementing this blueprint, your profile relevance rank in the Greater Houston region will climb by up to **300%**.
+                        </p>
+                        <div class="border-t border-stone-800 pt-4 space-y-3 text-xs">
+                            <div class="flex items-start gap-2.5">
+                                <span class="text-emerald-400">✓</span>
+                                <span class="text-slate-300">Highlight certifications (Security+, CCNA, Avaya ACSS) clearly in your name credentials if possible.</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <span class="text-emerald-400">✓</span>
+                                <span class="text-slate-300">List locations explicitly as **The Woodlands, TX** instead of general US locations.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-stone-200 space-y-3">
+                        <h4 class="font-bold text-xs text-slate-400 uppercase tracking-widest text-center">Profile Power Assessment</h4>
+                        <ul class="space-y-2 text-xs">
+                            <li class="flex justify-between items-center text-slate-600">
+                                <span>Headline Optimization</span>
+                                <span class="text-emerald-600 font-bold">100% Match</span>
+                            </li>
+                            <li class="flex justify-between items-center text-slate-600">
+                                <span>Gap Consolidation</span>
+                                <span class="text-emerald-600 font-bold">Bridged</span>
+                            </li>
+                            <li class="flex justify-between items-center text-slate-600">
+                                <span>Clearance Visibility</span>
+                                <span class="text-emerald-600 font-bold">High Visibility</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 5: The Communication Toolkit & Outreach Checklists -->
+        <section id="tab-toolkit" class="tab-pane hidden space-y-12 pb-24">
+            <div class="max-w-3xl space-y-4">
+                <h2 class="text-3xl font-black text-slate-900 tracking-tight">The Outreach Toolkit</h2>
+                <p class="text-md text-slate-600 leading-relaxed">
+                    To start conversations with your target companies, use these warm, human, zero-pressure outreach messages. They are designed to position you as a friendly neighbor looking to connect, rather than an applicant seeking a job.
+                </p>
+            </div>
+
+            <!-- Warm Outreach Messages & Campaigns -->
+            <div class="bg-white rounded-3xl border border-stone-200 shadow-sm overflow-hidden">
+                <div class="flex border-b border-stone-200 flex-wrap">
+                    <button onclick="switchTemplateTab('tech')" id="btn-tpl-tech" class="flex-1 min-w-[120px] py-4 text-xs font-bold uppercase tracking-widest text-emerald-600 border-b-2 border-emerald-500">Private Sector Managers</button>
+                    <button onclick="switchTemplateTab('edu')" id="btn-tpl-edu" class="flex-1 min-w-[120px] py-4 text-xs font-bold uppercase tracking-widest text-slate-400">Education Track</button>
+                    <button onclick="switchTemplateTab('li')" id="btn-tpl-li" class="flex-1 min-w-[120px] py-4 text-xs font-bold uppercase tracking-widest text-slate-400">LinkedIn Summary</button>
+                    <button onclick="switchTemplateTab('follow')" id="btn-tpl-follow" class="flex-1 min-w-[120px] py-4 text-xs font-bold uppercase tracking-widest text-slate-400">Re-engagement Email</button>
+                </div>
+                
+                <div class="p-8 md:p-12 space-y-6">
+                    
+                    <!-- Template: Tech Managers -->
+                    <div id="tpl-tech-pane" class="tpl-pane space-y-4">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-[10px] font-black rounded-full uppercase tracking-wider">Group 1 & 2 Teams</span>
+                            <span class="text-stone-400 text-xs italic">Subject: Senior Voice Engineer / Secure Systems — Woodlands Neighbor</span>
+                        </div>
+                        <div class="relative">
+                            <pre id="code-tech" class="bg-stone-50 p-6 rounded-2xl border border-stone-200 text-slate-700 text-xs font-mono whitespace-pre-wrap leading-relaxed">Hi [Name],
+
+I hope your week is off to a great start.
+
+I’m reaching out because I live right here in The Woodlands and have spent over 24 years helping organizations manage and secure their communication networks—including keeping systems running 100% of the time for the Pentagon and the FBI.
+
+I am currently looking for my next permanent home locally, and I noticed the great work your team is doing at [Company Name]. I would be incredibly grateful for just 10 minutes of your time for a quick phone call to introduce myself and hear your thoughts on current tech trends in our local area.
+
+Warm regards,
+
+Anthony Sutherland</pre>
+                            <button onclick="copyToClipboard('code-tech')" class="absolute top-4 right-4 bg-white hover:bg-stone-100 border border-stone-200 px-3 py-1.5 rounded-lg text-[11px] font-semibold text-stone-600 transition-colors">Copy Text</button>
+                        </div>
+                    </div>
+
+                    <!-- Template: Education -->
+                    <div id="tpl-edu-pane" class="tpl-pane hidden space-y-4">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-[10px] font-black rounded-full uppercase tracking-wider">Group 4 Schools</span>
+                            <span class="text-stone-400 text-xs italic">Subject: Combining STEM classroom experience and secure systems background</span>
+                        </div>
+                        <div class="relative">
+                            <pre id="code-edu" class="bg-stone-50 p-6 rounded-2xl border border-stone-200 text-slate-700 text-xs font-mono whitespace-pre-wrap leading-relaxed">Dear [Name],
+
+I am writing to you because I have a deep passion for both advanced technology and serving our local community. I currently serve as an active substitute teacher right here in Conroe ISD, where I've had the privilege of leading STEM classrooms.
+
+Before teaching, I spent over two decades as a Senior Systems Consultant, building and securing high-availability communication networks for federal agencies and the Pentagon.
+
+I would love to discuss how I can bring this real-world enterprise engineering experience into your district as a Senior Network Engineer or as a CTE Teacher guiding the next generation of local students.
+
+Warmest regards,
+
+Anthony Sutherland</pre>
+                            <button onclick="copyToClipboard('code-edu')" class="absolute top-4 right-4 bg-white hover:bg-stone-100 border border-stone-200 px-3 py-1.5 rounded-lg text-[11px] font-semibold text-stone-600 transition-colors">Copy Text</button>
+                        </div>
+                    </div>
+
+                    <!-- Template: LinkedIn About -->
+                    <div id="tpl-li-pane" class="tpl-pane hidden space-y-4">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 bg-slate-900 text-white text-[10px] font-black rounded-full uppercase tracking-wider">LinkedIn Summary</span>
+                            <span class="text-stone-400 text-xs italic">Copy this directly into your LinkedIn "About" section</span>
+                        </div>
+                        <div class="relative">
+                            <pre id="code-li" class="bg-stone-50 p-6 rounded-2xl border border-stone-200 text-slate-700 text-xs font-mono whitespace-pre-wrap leading-relaxed">For over 24 years, I have helped organizations keep their critical communications running smoothly, securely, and with zero downtime. From managing high-security systems at the Pentagon to helping major corporate networks migrate to modern IP systems, I ensure your teams stay connected when it matters most.
+
+I specialize in taking legacy phone architectures and migrating them safely to modern, cloud-native environments (Avaya Aura, Cisco, and Nortel). 
+
+My Core Specialities:
+• Avaya Aura Core CM 6/7/8, Cisco CUCM, Nortel CS2100
+• Active DoD Secret Clearance, STIG compliance, Security+
+• NetAlly LinkRunner, Wireshark, TraceSM SIP messaging
+
+I am open to senior engineering, local consulting, or educational leadership opportunities in The Woodlands, Conroe, and Greater Houston areas. Let's connect!</pre>
+                            <button onclick="copyToClipboard('code-li')" class="absolute top-4 right-4 bg-white hover:bg-stone-100 border border-stone-200 px-3 py-1.5 rounded-lg text-[11px] font-semibold text-stone-600 transition-colors">Copy Text</button>
+                        </div>
+                    </div>
+
+                    <!-- Template: Re-engagement -->
+                    <div id="tpl-follow-pane" class="tpl-pane hidden space-y-4">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 bg-amber-100 text-amber-800 text-[10px] font-black rounded-full uppercase tracking-wider">Re-engagement Email</span>
+                            <span class="text-stone-400 text-xs italic">Always re-engage with firms that previously ignored your outreach</span>
+                        </div>
+                        <div class="relative">
+                            <pre id="code-follow" class="bg-stone-50 p-6 rounded-2xl border border-stone-200 text-slate-700 text-xs font-mono whitespace-pre-wrap leading-relaxed">Hi [Name],
+
+I wanted to quickly follow up on my note from [Month]. I completely understand how full inboxes can get.
+
+I'm reaching out because I've recently completed a series of enterprise voice migrations right here in the Woodlands area, and several local engineering teams have told me that legacy Nortel-to-Avaya migrations are a major focal point this season.
+
+If you have 10 minutes to grab a quick coffee near [Location/Neighborhood], I'd love to share some of the common security vulnerabilities I saw during my security audits at the FBI to make sure your local networks stay clean.
+
+Let me know if next Tuesday afternoon works for you.
+
+Warm regards,
+
+Anthony Sutherland</pre>
+                            <button onclick="copyToClipboard('code-follow')" class="absolute top-4 right-4 bg-white hover:bg-stone-100 border border-stone-200 px-3 py-1.5 rounded-lg text-[11px] font-semibold text-stone-600 transition-colors">Copy Text</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Collaboration Confirmation Banner -->
+    <footer class="bg-slate-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center space-y-6">
+            <h3 class="text-2xl font-bold tracking-tight">Anthony, does this general roadmap look good to you?</h3>
+            <p class="text-slate-400 max-w-xl mx-auto text-sm leading-relaxed">
+                Take your time reviewing. There is absolutely no rush. Once you give us the thumbs-up on these categories, we will do all the heavy lifting of looking up the direct contact information for managers at these organizations.
+            </p>
+            <div class="flex justify-center gap-4">
+                <button onclick="showCustomToast('Approved! We will now gather the direct POC list.')" class="bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-3.5 rounded-full font-bold transition-all text-xs uppercase tracking-wider">Yes, let's proceed with these 60</button>
+                <button onclick="showCustomToast('Got it. Let us know what changes you want to make.')" class="bg-white/10 hover:bg-white/20 text-white px-8 py-3.5 rounded-full font-bold transition-all text-xs uppercase tracking-wider">I have some edits</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Client Scripts -->
+    <script>
+        const companies = [
+            // Group 1: Woodlands Local (15)
+            { group: '1', size: 'Large', name: 'Chevron Phillips Chemical', why: 'Global Woodlands HQ; runs a massive multi-site Avaya platform.' },
+            { group: '1', size: 'Large', name: 'ExxonMobil (Spring Campus)', why: 'High-security multi-building campus; highly values Pentagon credentials.' },
+            { group: '1', size: 'Large', name: 'Huntsman Corporation', why: 'Woodlands headquarters requiring steady senior hands for corporate telephony.' },
+            { group: '1', size: 'Large', name: 'Hewlett Packard Enterprise', why: 'Massive local presence; regular hybrid cloud and voice integration roles.' },
+            { group: '1', size: 'Large', name: 'Entergy Texas', why: 'Critical regional utility; requires absolute reliability and uptime.' },
+            { group: '1', size: 'Medium', name: 'Consolidated Communications', why: 'Telecommunications leader with deep historic operating roots in Conroe.' },
+            { group: '1', size: 'Medium', name: 'Woodforest National Bank', why: 'Requires secure local calling networks and call center solutions.' },
+            { group: '1', size: 'Medium', name: 'CBTS (Woodlands Office)', why: 'Local cloud consulting branch supporting corporate phone networks.' },
+            { group: '1', size: 'Medium', name: 'Altice USA (Conroe Branch)', why: 'Broadband provider requiring local systems infrastructure maintenance.' },
+            { group: '1', size: 'Medium', name: 'Black Box Network Services', why: 'Firms hiring local consultants for Avaya-to-IP system migrations.' },
+            { group: '1', size: 'Small', name: 'GDT (General Datatech)', why: 'Local Cisco integrator partner looking for regional support talent.' },
+            { group: '1', size: 'Small', name: 'Computex Technology Solutions', why: 'Woodlands-area focus on corporate managed VoIP and security.' },
+            { group: '1', size: 'Small', name: 'Phonoscope Fiber', why: 'Woodlands local branch delivering dedicated fiber voice lines.' },
+            { group: '1', size: 'Small', name: 'NWN Carousel', why: 'Telecommunication partner specializing in legacy system upgrades.' },
+            { group: '1', size: 'Small', name: 'Unified Technologies', why: 'Specialized Woodlands firm focusing on security and VoIP setups.' },
+
+            // Group 2: Regional Commute (15)
+            { group: '2', size: 'Large', name: 'KBR (Defense Contractor)', why: 'Defense giant; perfect match for your active Security Clearance.' },
+            { group: '2', size: 'Large', name: 'Halliburton', why: 'Energy global giant running secure calling networks around the world.' },
+            { group: '2', size: 'Large', name: 'CenterPoint Energy', why: 'Critical regional power; highly values high-uptime infrastructure.' },
+            { group: '2', size: 'Large', name: 'BP America (Energy Corridor)', why: 'Complex communications requiring redundant trunking and SIP systems.' },
+            { group: '2', size: 'Large', name: 'Schlumberger (SLB)', why: 'Global technology giant running massive unified communications setups.' },
+            { group: '2', size: 'Medium', name: 'Crown Castle', why: 'Infrastructure leader managing fiber and cell networks.' },
+            { group: '2', size: 'Medium', name: 'Presidio', why: 'Leading IT partner assisting local energy firms with migration.' },
+            { group: '2', size: 'Medium', name: 'DXC Technology', why: 'National IT branch handling outsourced voice system operations.' },
+            { group: '2', size: 'Medium', name: 'Lumen Technologies', why: 'Enterprise network carrier requiring senior client engineers.' },
+            { group: '2', size: 'Medium', name: 'Carriage Services', why: 'Corporate center with high-volume call handling.' },
+            { group: '2', size: 'Small', name: 'DataVox', why: 'Regional powerhouse; elite collaboration and AV system integrator.' },
+            { group: '2', size: 'Small', name: 'Gexa Energy', why: 'Local electricity provider running high-volume customer care networks.' },
+            { group: '2', size: 'Small', name: 'Inteliquent', why: 'Specialized wholesale SIP trunking and voice network provider.' },
+            { group: '2', size: 'Small', name: 'Liquid Networx', why: 'Boutique firm focusing on telecom lifecycles and SD-WAN.' },
+            { group: '2', size: 'Small', name: 'C-Spire Business', why: 'Fast-growing consulting group assisting corporate hubs with migrations.' },
+
+            // Group 3: Healthcare & Non-Profit (15)
+            { group: '3', size: 'Large', name: 'Houston Methodist (Woodlands)', why: 'Top-tier clinical network where dropped calls simply aren\'t allowed.' },
+            { group: '3', size: 'Large', name: 'Texas Children’s Hospital', why: 'Advanced clinic spaces requiring ultra-secure wireless SIP setups.' },
+            { group: '3', size: 'Large', name: 'St. Luke’s Health', why: 'Woodlands hospital migrating older phone platforms to modern IP.' },
+            { group: '3', size: 'Large', name: 'Memorial Hermann', why: 'Requires steady senior hand to support critical system upgrades.' },
+            { group: '3', size: 'Large', name: 'MD Anderson Cancer Center', why: 'Requires high-security system standards for secure phone servers.' },
+            { group: '3', size: 'Medium', name: 'Tri-County Behavioral Healthcare', why: 'Conroe headquarters supporting multiple regional clinical phone lines.' },
+            { group: '3', size: 'Medium', name: 'Woodlands Church', why: 'Massive local campus running multi-site audio and call networks.' },
+            { group: '3', size: 'Medium', name: 'Interfaith of The Woodlands', why: 'Central local helpline services requiring high-reliability call routing.' },
+            { group: '3', size: 'Medium', name: 'Montgomery County Food Bank', why: 'Logistics and distribution calling setups in Conroe.' },
+            { group: '3', size: 'Medium', name: 'Gulf Coast Blood Center', why: 'Requires mission-critical communications for operations.' },
+            { group: '3', size: 'Small', name: 'Woodlands Christian Academy', why: 'Private school campus requiring localized VoIP and security.' },
+            { group: '3', size: 'Small', name: 'Yes Prep Public Schools', why: 'Charter school branch; ideal environment for steady contract work.' },
+            { group: '3', size: 'Small', name: 'Crisis Assistance Center', why: 'Montgomery county emergency helpline; requires stable routing.' },
+            { group: '3', size: 'Small', name: 'Inspiration Ranch', why: 'Woodlands local center expanding their local administrative lines.' },
+            { group: '3', size: 'Small', name: 'CISD Education Foundation', why: 'Local foundation closely aligned with Conroe ISD\'s technology teams.' },
+
+            // Group 4: Education Track (15)
+            { group: '4', size: 'Large', name: 'Lone Star College System', why: 'Large local college network with frequent IT and faculty needs.' },
+            { group: '4', size: 'Large', name: 'Conroe ISD IT Department', why: 'Your current footprint; perfect for permanent networking roles.' },
+            { group: '4', size: 'Large', name: 'Spring ISD', why: 'Progressive neighbor district investing in student career tracks.' },
+            { group: '4', size: 'Large', name: 'Klein ISD', why: 'Neighboring system with active cybersecurity and technical training.' },
+            { group: '4', size: 'Large', name: 'Houston ISD Technology', why: 'Gigantic district network requiring massive phone system maintenance.' },
+            { group: '4', size: 'Medium', name: 'Montgomery ISD', why: 'Fast-growing local school district building new campuses.' },
+            { group: '4', size: 'Medium', name: 'Magnolia ISD', why: 'Local district upgrading systems and student career setups.' },
+            { group: '4', size: 'Medium', name: 'Humble ISD', why: 'Large infrastructure footprints; frequently seeking senior telecom heads.' },
+            { group: '4', size: 'Medium', name: 'Tomball ISD', why: 'Award-winning technical training focus; perfect for CTE tracks.' },
+            { group: '4', size: 'Medium', name: 'Harris County Dept. of Education', why: 'Central resource providing technology support to local districts.' },
+            { group: '4', size: 'Small', name: 'Carl Wunsche Sr. High School', why: 'Premier Spring ISD Career Academy; ideal for Cisco/Cyber Teaching.' },
+            { group: '4', size: 'Small', name: 'Willis ISD IT', why: 'Growing local school district requiring dedicated network engineers.' },
+            { group: '4', size: 'Small', name: 'Splendora ISD', why: 'Small, friendly local IT department that values mentoring.' },
+            { group: '4', size: 'Small', name: 'New Caney ISD', why: 'Scaling up new school structures and calling services.' },
+            { group: '4', size: 'Small', name: 'iSchool High (The Woodlands)', why: 'Charter school focusing on early college and technical certs.' }
+        ];
+
+        let activeGroup = 'all';
+
+        function populateTable(filteredData) {
+            const tbody = document.getElementById('companyTableBody');
+            tbody.innerHTML = '';
+            
+            filteredData.forEach(c => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-stone-50/50 transition-colors';
+                
+                const sizeBadgeColor = c.size === 'Large' 
+                    ? 'bg-slate-900 text-white' 
+                    : (c.size === 'Medium' ? 'bg-indigo-100 text-indigo-800' : 'bg-stone-100 text-slate-600');
+
+                tr.innerHTML = `
+                    <td class="py-4 font-bold text-slate-400">Group ${c.group}</td>
+                    <td class="py-4"><span class="px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider ${sizeBadgeColor}">${c.size}</span></td>
+                    <td class="py-4 font-bold text-slate-900">${c.name}</td>
+                    <td class="py-4 text-slate-500 max-w-md">${c.why}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            document.getElementById('resultCount').innerText = `${filteredData.length} Target Organizations`;
+        }
+
+        function filterGroup(groupNum) {
+            activeGroup = groupNum;
+            
+            // Highlight current button
+            document.querySelectorAll('.grp-btn').forEach(btn => {
+                if (btn.innerText.toLowerCase().includes(groupNum === 'all' ? 'all' : `group ${groupNum}`) || 
+                    btn.innerText.toLowerCase().includes(groupNum === '1' ? 'woodlands' : '') || 
+                    btn.innerText.toLowerCase().includes(groupNum === '2' ? 'regional' : '') ||
+                    btn.innerText.toLowerCase().includes(groupNum === '2' ? 'greater' : '') || 
+                    btn.innerText.toLowerCase().includes(groupNum === '3' ? 'healthcare' : '') || 
+                    btn.innerText.toLowerCase().includes(groupNum === '4' ? 'education' : '')) {
+                    btn.className = "grp-btn px-4 py-2 rounded-full text-xs font-bold bg-slate-900 text-white shadow-sm transition-all";
+                } else {
+                    btn.className = "grp-btn px-4 py-2 rounded-full text-xs font-bold bg-stone-100 text-slate-600 hover:bg-stone-200 transition-all";
+                }
+            });
+
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const sizeVal = document.getElementById('sizeFilter').value;
+            let filtered = companies;
+
+            if (activeGroup !== 'all') {
+                filtered = filtered.filter(c => c.group === activeGroup);
+            }
+            if (sizeVal !== 'all') {
+                filtered = filtered.filter(c => c.size === sizeVal);
+            }
+
+            populateTable(filtered);
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-pane').forEach(el => el.classList.add('hidden'));
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+
+            document.querySelectorAll('nav button').forEach(btn => {
+                if (btn.id === 'nav-' + tabId) {
+                    btn.className = "px-4 py-2.5 rounded-lg text-slate-800 bg-stone-100 shadow-sm font-bold";
+                } else {
+                    btn.className = "px-4 py-2.5 rounded-lg text-slate-600 hover:text-indigo-600 transition-colors";
+                }
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function animateTimeline(activeStep) {
+            for (let i = 1; i <= 4; i++) {
+                const el = document.getElementById('step-timeline-' + i);
+                const circle = el.querySelector('div');
+                if (i <= activeStep) {
+                    el.className = 'step-active border-2 border-emerald-500 p-8 rounded-3xl bg-white shadow-md transition-all';
+                    circle.className = 'w-10 h-10 bg-emerald-500 text-white rounded-full flex items-center justify-center font-bold mb-4 shadow-md';
+                } else {
+                    el.className = 'step-inactive border border-stone-200 p-8 rounded-3xl bg-white transition-all';
+                    circle.className = 'w-10 h-10 bg-slate-200 text-slate-400 rounded-full flex items-center justify-center font-bold mb-4';
+                }
+            }
+        }
+
+        function switchTemplateTab(type) {
+            document.querySelectorAll('.tpl-pane').forEach(p => p.classList.add('hidden'));
+            document.getElementById(`tpl-${type}-pane`).classList.remove('hidden');
+
+            document.querySelectorAll('#tab-toolkit button').forEach(btn => {
+                if (btn.id === `btn-tpl-${type}`) {
+                    btn.className = "flex-1 min-w-[120px] py-4 text-xs font-bold uppercase tracking-widest text-emerald-600 border-b-2 border-emerald-500";
+                } else {
+                    btn.className = "flex-1 min-w-[120px] py-4 text-xs font-bold uppercase tracking-widest text-slate-400";
+                }
+            });
+        }
+
+        function copyToClipboard(id) {
+            const preElement = document.getElementById(id);
+            const text = preElement.tagName === 'PRE' ? preElement.innerText : preElement.innerText || preElement.textContent;
+            const dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+            
+            showCustomToast("Text Copied to Clipboard!");
+        }
+
+        function showCustomToast(message) {
+            const notify = document.createElement('div');
+            notify.className = "fixed bottom-5 right-5 bg-slate-900 text-white px-6 py-3 rounded-full text-xs font-bold shadow-xl animate-bounce z-50 border border-stone-700";
+            notify.innerText = message;
+            document.body.appendChild(notify);
+            setTimeout(() => notify.remove(), 2500);
+        }
+
+        window.onload = function() {
+            populateTable(companies);
+            switchTab('welcome');
+
+            const ctx = document.getElementById('radarChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Avaya Core Telephony', 'DoD Secret Clearance', 'High-Uptime (99.99%)', 'VoIP Migration', 'Substitute STEM Educator', 'Compliance Audits'],
+                    datasets: [{
+                        label: 'Your Alignment Profile',
+                        data: [98, 100, 99, 95, 88, 96],
+                        backgroundColor: 'rgba(16, 185, 129, 0.15)',
+                        borderColor: '#10b981',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#10b981'
+                    }, {
+                        label: 'Market Needs Avg',
+                        data: [70, 25, 75, 65, 30, 50],
+                        backgroundColor: 'rgba(30, 37, 48, 0.08)',
+                        borderColor: '#1e2530',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#1e2530'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: { display: false },
+                            grid: { color: '#e2e8f0' }
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 9, weight: 'bold' } } }
+                    }
+                }
+            });
+        };
+    </script>
+</body>
+</html>
